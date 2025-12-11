@@ -2,33 +2,83 @@
 {
    class Program
    {
+      
       static void Main(string[] args)
       {
-         
-         string[] menu = { "1.Курс валют\n2.Обменник\n0.Exit\n", "1.Search \n0.Exit\n"};
-         Console.WriteLine(menu[0]);
-         Console.WriteLine("Select option from the list: ");
-         int choice = int.Parse(Console.ReadLine());
-         while (choice != 0)
+         Dictionary<string, decimal> currency = new Dictionary<string, decimal>
          {
-            if (choice == 1)
+            ["USD"] = 493.50m,
+            ["EUR"] = 520.30m,
+            ["RUB"] = 5.20m,
+            ["KZT"] = 1.00m
+         };
+
+         bool exit = false;
+         
+         while (!exit)
+         {
+            Console.Clear();
+            Console.WriteLine("КОНВЕРТЕР ВАЛЮТ\n1.Посмотреть курс валют\n2.Обменять валюту\n0.Выход\n");
+            Console.WriteLine("Выберите опцию: ");
+
+            if (int.TryParse(Console.ReadLine(), out int choice))
             {
-               int subchoice = 99;
-               while (subchoice != 0)
+               switch (choice)
                {
-                  Console.WriteLine(menu[1]);
-                  subchoice = int.Parse(Console.ReadLine());
+                  case 1:
+                     ShowCurrencyRates(currency);
+                     break;
+
+                  case 2:
+                     ExchangeCurrency(currency);
+                     break;
+
+                  case 0:
+                     exit = true;
+                     Console.WriteLine("Bye bye!");
+                     break;
+                  default:
+                     Console.WriteLine("Incorrect input!");
+                     break;
                }
             }
-            else if (choice == 2)
+            else
             {
-               
+               Console.WriteLine("Enter number!");
             }
-         Console.WriteLine(menu[0]);
-         Console.WriteLine("Select option from the list: ");
-         choice = int.Parse(Console.ReadLine());
+            if (!exit)
+            {
+               Console.WriteLine("Press any key to continue....");
+               Console.ReadKey();
+            }
          }
-          
+         
       }
+
+      static void ShowCurrencyRates(Dictionary<string,decimal> currency)
+         {
+            Console.Clear();
+            Console.WriteLine("Курс валют к тенге:");
+
+            foreach (var pair in currency)
+               {
+            if (pair.Key != "KZT") {
+               Console.WriteLine($"1 {pair.Key} = {pair.Value:F2} KZT");
+                  }
+               }
+         }
+      
+
+      private static void ExchangeCurrency(Dictionary<string,decimal> currency)
+      {
+         Console.WriteLine("NOthing here");
+      }
+   public enum CurrencyCode
+      {
+         USD,
+         EUR,
+         RUB,
+         KZT
+      } 
    }
 }
