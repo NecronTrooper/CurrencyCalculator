@@ -12,3 +12,4 @@ C:\Users\akezh\Desktop\C#\ConsoleApp2\CurrencyCalculator\obj\Debug\net9.0\refint
 C:\Users\akezh\Desktop\C#\ConsoleApp2\CurrencyCalculator\obj\Debug\net9.0\CurrencyCalculator.pdb
 C:\Users\akezh\Desktop\C#\ConsoleApp2\CurrencyCalculator\obj\Debug\net9.0\CurrencyCalculator.genruntimeconfig.cache
 C:\Users\akezh\Desktop\C#\ConsoleApp2\CurrencyCalculator\obj\Debug\net9.0\ref\CurrencyCalculator.dll
+C:\Users\akezh\Desktop\C#\ConsoleApp2\CurrencyCalculator\obj\Debug\net9.0\CurrencyCalculator.sourcelink.json

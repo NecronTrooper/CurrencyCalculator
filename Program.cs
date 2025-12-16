@@ -10,9 +10,9 @@
             ["USD"] = 493.50m,
             ["EUR"] = 520.30m,
             ["RUB"] = 5.20m,
-            ["KZT"] = 1.00m
+            ["KZT"] = 1.00m 
          };
-
+ 
          bool exit = false;
          
          while (!exit)
@@ -67,11 +67,40 @@
                   }
                }
          }
-      
 
-      private static void ExchangeCurrency(Dictionary<string,decimal> currency)
+
+      private static void ExchangeCurrency(Dictionary<string, decimal> currency)
       {
-         Console.WriteLine("NOthing here");
+         Console.Clear();
+         Console.WriteLine("Введи наименование исходной валюты(KZT/USD/EUR/..): ");
+         string name1 = Console.ReadLine().ToUpper();
+         if (currency.TryGetValue(name1, out decimal curVal1))
+         {
+            Console.Clear();
+            Console.WriteLine("Введите наименование исходящей валюты(KZT/USD/EUR/..): ");
+            string name2 = Console.ReadLine().ToUpper();
+            if (currency.TryGetValue(name2, out decimal curVal2))
+            {
+               Console.Clear();
+               Console.WriteLine("Количество валюты: ");
+               decimal volume = int.Parse(Console.ReadLine());
+               decimal result = (volume / curVal2) * curVal1;
+               Console.Clear();
+               Console.WriteLine($"{volume:F2} {name1} = {result:F2} {name2}");
+            }
+            else
+            {
+               Console.WriteLine($"Валюта {name2} не найдена!");
+            }
+         }
+         else
+         {
+            Console.WriteLine($"Валюта {name1} не найдена!");
+         }
+            Console.WriteLine("\nНажмите любую клавишу для продолжения...");
+            Console.ReadKey();
+
+         }
       }
    public enum CurrencyCode
       {
@@ -81,4 +110,3 @@
          KZT
       } 
    }
-}
